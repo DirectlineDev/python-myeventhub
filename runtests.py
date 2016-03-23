@@ -4,4 +4,6 @@ import os
 from six import print_
 
 
-print_(os.environ.keys())
+# test environment variables
+for k in os.environ.keys():
+    print_(k)

@@ -1,0 +1,25 @@
+language: python
+python:
+- 3.5
+sudo: false
+env:
+  matrix:
+  - TOXENV=py27
+  - TOXENV=py34
+  - TOXENV=py35
+  - TOXENV=coverage
+  global:
+    secure: qGEl5s32Ht0b3mnQcrz4wftp+z0kHbuD/mipyQPg1sMyCzDdTkkKTwx+x1bj70Zbibtuy4DznuISPfdTdnp/PrghQrMRd2gIJBjHC9CAtqgn1DWHRjiCZ6Y0bSk82w1A0KNwBqZoBnnYxSrGYRUnjnEy6CFTqvNcjF3pT0hoXiamJHg3R1dj9z9k5ITL1s4mOfX5qd1fGGiPXnoF1r90GJo7SWiO6Pys2d9cU0GYShGnO0jY7Pn9KipxGvOtOY319URhocv8SdxSdfXjopbi2g6x/f4q6OrxuWpo61hhZkEFUxmfWwHTY+56wP6w4j8R1BSKMMAqHAVoMkms65jO+dSsOyhUNjM5OLQ7QLiPoPrFZOYodgK90GdGJTD7rpzA8dxkQ5YDGO8nY+OEYSD0QsiXquEps7XJZYLSbK6HKQNIDYWuVYwfuPkiLseZfZnFypaz/d32EZy/DGY92k5ydlP/Wr84NskvZiK1DLpp5YrGJJM5jpcBVNgx4vAB1WvODzLJwlqAxr5eb8T99mVSPYDlJmd2x1XE3lTHKucX2UKJ2GfpDGY0GEyKE6Hw/VJSzKzkQFiK9eCBxK75LygsNFrTeXDjAf5A5rTCMoRbCmNzVRhS4ntkcJRch6O2XNmnaIallA3S/E9hD/9a8dhLvml/erRU56gMpK+KW70cMiQ=
+install:
+- pip install -q tox
+script:
+- tox
+deploy:
+  provider: pypi
+  user: MrYoda
+  password:
+    secure: ETgFZv2wgb0j4NoXa64DDAJluSJN4cGdeBk3jirjFfhc8P5TrHFx9u7GHDNfKbCtV2zjzYFwIzVW2nULw2XGuJHL1DjIDGKVoPxwQT4LYjO6C4XlYXRN3A/jnLajMKd+mmBZn43SqameDYhoy70CBg7ecQhfLNjvO5EIICuk15HGtAzr9CS2k5/PrFkohtR10UTqA9OAhS2mRSO6VgT1aT49q3Rrf+6Yh47U7cJ9f7gUjT8zvQfVsGqqP2QED+jY5ldIVUmdlvF6TrFxTYjDQUVwjM0KWwvw4KlvoNpXobFmIUl9yGEjZ9t2E9QKtciIIKB9CYxg1619abKAetw10Kcc/11cSps9jwHmVgyf7sLLeKnbyxdnPestYTUBt2EokVaLfOqV3tI977KEjLr+NSePzCKHZ9WZNmWQGCf7dU+tjPaOqLHh20iRWRiqQKLcgq24Amj+e0VI4nFiKP4TZpHelOOx++iP3wWgkFCWCX0jCz6R2V4xGTgtrB5DNcR27EJWPauxHzEOl9L7ukPON1A0A52PFJgUIyzGnkNWSdZHnrTyRH5mST1fDz8C3QYHPChzATmo3kohXvFn7IEh1j5mvLXEL9ViV5Xg5heUaew7G6kWGpR5ceUm6ap4kYORYM2EQmW81Y/3VBOJYlFTE5fR03ebjLqJIXlFhOec+sc=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: DirectlineDev/python-myeventhub

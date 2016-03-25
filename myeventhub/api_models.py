@@ -70,6 +70,18 @@ class Model:
             self.properties.name.value = value
             self.properties.name.verbose_name = verbose_name
 
+    def is_any_prop_startedwith_has_value(self, startswith):
+        """ Возвращает True, если хоть одно свойство модели, начинающееся со startswith, имеет непустое значение
+        Может пригодиться для определения типа события: например, если хоть одно свойство,
+        начинающееся со PROP_CHILDREN, имеет значение, значит событие можно отнести к детским
+        :param startswith: строка, с которой должно начинаться свойство
+        :return: bool
+        """
+        for prop_name in self.properties.__dir__():
+            if str(prop_name).startswith(startswith) and getattr(self.properties, prop_name).value:
+                return True
+        return False
+
     @classmethod
     def object_from_api(cls, d, raw_json=None):
         """ Создание объекта модели из json-ответа API
